@@ -1,0 +1,376 @@
+/* 
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 1vh;
+    background-color: #d7dfeb;
+    overflow: hidden;
+}
+.mainBox{
+    width: 80vw;
+    height: 80vh;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+
+}
+
+.rightChatBox{
+    width: 60%;
+    height: 95%;
+    background-color: rgb(227, 213, 187);
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+.header{
+    height: 5%;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    color: green;
+    background-color: rgb(223, 223, 223);
+    padding: 5px 0px;
+}
+.greenCircle {
+    
+    margin: 0px 10px;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: green;
+    border-radius: 50%;
+}
+
+.chatBox {
+    margin-top: 1vh;
+    height: 85%;
+    overflow-x: auto;
+
+    padding-left: 10px;
+    border: 1px solid #ccc;
+    
+   
+}
+
+.messageContainer {
+    padding: 10px;
+    max-width: 50%;
+    font-size: 1.2rem;
+}
+
+.message {
+    background-color: #e2e2e2;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+
+.messageBox{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(223, 223, 223);
+    padding-left: 10px;
+
+}
+.top{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.eachChat{
+    background-color: red;
+    display: inline-block;
+}
+
+
+input{
+
+    width: 88%;
+    height: 60%;
+    font-size: 1.2rem;
+    padding-left: 10px;
+}
+button{
+    width: 10%;
+    background-color: green;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    height: 64%;
+    border: none;
+    color: white;
+    border-left: none;
+}
+.leftUserCountBox{
+    display: flex;
+    flex-direction: column;
+    padding-top: 8vh;
+    margin: 0 auto;
+}
+.userButtonBox{
+    margin: 5px 0px;
+    width: 14vw;
+    height: 4vh;
+    font-size: 1.3rem;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 15px;
+}
+.userCountBox{
+    margin: 5px 0px;
+    width: 14vw;
+    height: 4vh;
+    font-size: 1.3rem;
+    border: 2px solid blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    border-radius: 15px;
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 1vh;
+    background-color: #d7dfeb;
+    overflow: hidden;
+}
+
+.mainBox {
+    width: 80vw;
+    height: 80vh;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+}
+
+.rightChatBox {
+    width: 60%;
+    height: 95%;
+    background-color: rgb(227, 213, 187);
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.header {
+    height: 5%;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    color: green;
+    background-color: rgb(223, 223, 223);
+    padding: 5px 0px;
+}
+
+.greenCircle {
+    margin: 0px 10px;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: green;
+    border-radius: 50%;
+}
+
+.chatBox {
+    margin-top: 1vh;
+    height: 85%;
+    overflow-x: auto;
+    padding-left: 10px;
+    border: 1px solid #ccc;
+}
+
+.messageContainer {
+    padding: 10px;
+    max-width: 50%;
+    font-size: 1.2rem;
+}
+
+.message {
+    background-color: #e2e2e2;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+
+.messageBox {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(223, 223, 223);
+    padding-left: 10px;
+}
+.spanUserNmae{
+    margin-right: 100px;
+    /* margin-left: 200px; */
+}
+.top {
+    display: flex;
+    justify-content: space-between;
+   
+    margin-left: 15px;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+input {
+    width: 88%;
+    height: 60%;
+    font-size: 1.2rem;
+    padding-left: 10px;
+}
+
+button {
+    width: 10%;
+    background-color: green;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    height: 64%;
+    border: none;
+    color: white;
+}
+
+.leftUserCountBox {
+    display: flex;
+    flex-direction: column;
+    padding-top: 8vh;
+    margin: 0 auto;
+}
+
+.userButtonBox {
+    margin: 5px 0px;
+    width: 14vw;
+    height: 4vh;
+    font-size: 1.3rem;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 15px;
+}
+
+.userCountBox {
+    margin: 5px 0px;
+    /* width: 60%; */
+    width: 15vw;
+    height: 4vh;
+    font-size: 1.3rem;
+    border: 2px solid blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    border-radius: 15px;
+}
+.sentMessage {
+    background-color: green;
+    align-self: flex-end;
+    margin-top: 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+.receivedMessage {
+    margin-top: 10px;
+    background-color: #e2e2e2;
+    align-self: flex-start;
+    border-radius: 10px;
+}
+.userAvatar {
+    width: 30px; /* Set the width of the circular image */
+    height: 30px; /* Set the height of the circular image */
+    border-radius: 50%; /* Make it circular */
+    margin-right: 10px; /* Add some margin between the image and username */
+  }
+  .messageColumn{
+    display: flex;
+    /* align-items: ce; */
+  }
+/* Media Queries for responsiveness */
+
+@media only screen and (max-width: 1200px) {
+    .mainBox {
+        flex-direction: column;
+        align-items: center; /* Align content in the center */
+        width: 90vw;
+        height: 100vh;
+        /* height: 60vh; */
+    }
+
+    .rightChatBox {
+        width: 90%; /* Adjust as needed */
+        max-width: 400px; /* Limit maximum width */
+        margin-top: 1rem;
+        height: 75vh;
+    }
+
+    .chatBox {
+        max-width: 100%;
+    }
+
+    .messageContainer {
+        max-width: 100%;
+    }
+
+    .messageBox {
+        flex-direction: column;
+        align-items: center; /* Align content in the center */
+        height: auto;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    button {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .leftUserCountBox {
+        margin-top: 1rem;
+        align-items: center; /* Align content in the center */
+        width: 90%; /* Adjust as needed */
+        max-width: 400px; /* Limit maximum width */
+        height: 200px; /* Set a fixed height */
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+
+    .userButtonBox {
+        /* width: 100%;  */
+        width: 200px;
+        height: 6vh;
+        /* background-color: red; */
+    }
+    .userCountBox{
+        width: 200px;
+        height: 6vh; 
+    }
+}

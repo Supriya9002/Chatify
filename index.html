@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="mainBox">
+    <div class="rightChatBox">
+      <div class="header">
+        <span class="greenCircle"></span> Welcome &ensp; <span id='usernameHeader'>ABC</span>
+      </div>
+      <div class="chatBox" id="chatBoxList"></div>
+      <div class="messageBox">
+        <input type="text" name="" id="messageInput">
+        <button id="sendButton">Send</button>
+      </div>
+    </div>
+    <div class="leftUserCountBox">
+      <div class="userCountBox">
+        Connected users <span id="userCount">0</span>
+      </div>
+      <div id="userNameList"></div>
+    </div>
+  </div>
+
+  <script src="http://localhost:3300/socket.io/socket.io.js"></script>
+  <script>
+    const usernameHeader = document.getElementById('usernameHeader');
+    const sendButton = document.getElementById('sendButton');
+    const messageInput = document.getElementById('messageInput');
+    const chatBoxList = document.getElementById('chatBoxList');
+    const userCount = document.getElementById('userCount');
+    const userNameList = document.getElementById('userNameList'); // Added this line
+
+    const socket = io.connect('http://127.0.0.1:3300');
+    let username = prompt('Enter your name') || 'Guest';
+
+    console.log(username);
+    socket.emit('join', username);
+
+    usernameHeader.innerText = username;
+
+    sendButton.addEventListener('click', () => {
+        const message = messageInput.value;
+        socket.emit('new_message', message);
+        messageInput.value = '';
+    });
+
+    socket.on('load_messages', (messages) => {
+        messages.forEach((message) => {
+            displayMessage(message.username, message.message);
+        });
+    });
+
+    socket.on('broadcast_message', (message) => {
+        displayMessage(message.username, message.message);
+    });
+
+    socket.on('update_users', (data) => {
+        userCount.innerText = data.userCount;
+
+       
+        updateUserList(data.users);
+    });
+
+    function updateUserList(users) {
+        // Clear previous user list
+        userNameList.innerHTML = '';
+
+        // Add each user to the list
+        users.forEach((user) => {
+            const userDiv = document.createElement('div');
+            userDiv.innerText = user;
+            userDiv.classList = 'userButtonBox';
+            userNameList.appendChild(userDiv);
+        });
+    }
+
+    function displayMessage(username, message) {
+    const messageDiv = document.createElement('div');
+    const messageInner = document.createElement('div');
+    const topDiv = document.createElement('div');
+    const spanUserName = document.createElement('span');
+    const spanTimeStamp = document.createElement('span');
+    const bottomDiv = document.createElement('div');
+
+    // Create and append the circular image
+    const userAvatar = document.createElement('img');
+    userAvatar.src = './images/1.jpeg'; // Replace with the actual path to your image
+    userAvatar.alt = 'User Avatar';
+    userAvatar.classList.add('userAvatar');
+    // topDiv.appendChild(userAvatar);
+    
+    spanUserName.innerText = username;
+    spanUserName.classList = 'spanUserNmae';
+    spanTimeStamp.innerText = new Date().toLocaleTimeString();
+
+    topDiv.classList = 'top';
+    topDiv.appendChild(spanUserName);
+    topDiv.appendChild(spanTimeStamp);
+
+    bottomDiv.classList = 'bottom';
+    bottomDiv.innerText = message;
+
+    messageInner.appendChild(topDiv);
+    messageInner.appendChild(bottomDiv);
+
+    messageDiv.classList = "messageColumn"
+    messageDiv.appendChild(userAvatar);
+    messageDiv.appendChild(messageInner);
+    chatBoxList.appendChild(messageDiv);
+
+    // Determine the class based on the sender
+    // if (username === 'Guest') {
+    messageDiv.classList.add('messageContainer', 'receivedMessage');
+    // } else {
+    //     messageDiv.classList.add('messageContainer', 'sentMessage');
+    // }
+  }
+  </script>
+
+</body>
+</html>
